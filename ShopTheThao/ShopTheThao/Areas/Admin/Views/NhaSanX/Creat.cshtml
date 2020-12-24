@@ -1,0 +1,51 @@
+﻿@model ShopTheThao.Areas.Admin.Models.NhaSXModel
+
+@{
+    ViewBag.Title = "Creat";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Tạo Hãng mới</h2>
+<div>
+    <i class="fa fa-undo fa-fw"></i>@Html.ActionLink("Quay lại", "Index", "Producer")
+</div>
+@using (Html.BeginForm("Creat", "NhaSanX", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="text-success">
+            @ViewBag.message
+        </div>
+        <div class="form-group col-lg-5">
+            <label>Tên hãng</label>
+            @Html.EditorFor(model => model.NSXTen, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên hãng..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.NSXTen)</div>
+
+            <label>Số điện thoại</label>
+            @Html.EditorFor(model => model.NSXSdt, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập số điện thoại..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.NSXSdt)</div>
+
+            <label>Email</label>
+            @Html.EditorFor(model => model.NSXEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập email..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.NSXEmail)</div>
+
+            <label>Địa chỉ</label>
+            @Html.TextAreaFor(model => model.NSXDiaChi, new { @class = "form-control", @placeholder = "Nhập địa chỉ..." })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.NSXDiaChi)</div>
+
+            <label>Thông tin</label>
+            @Html.TextAreaFor(model => model.NSXThongTin, new { @class = "form-control", @placeholder = "Nhập thông tin hãng..." })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.NSXThongTin)</div>
+           
+            <br />
+            <input type="submit" value="Tạo mới" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

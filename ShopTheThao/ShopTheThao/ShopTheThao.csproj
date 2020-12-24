@@ -1,0 +1,956 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{09F4AF44-7739-4B98-A5EE-43C3B8E9471B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopTheThao</RootNamespace>
+    <AssemblyName>ShopTheThao</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\comman\Contanst.cs" />
+    <Compile Include="Areas\Admin\comman\UserLogIn.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DeteilOrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhaSanXController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TheLoaiSPController.cs" />
+    <Compile Include="Areas\Admin\Models\AccountModel.cs" />
+    <Compile Include="Areas\Admin\Models\CategoryModel.cs" />
+    <Compile Include="Areas\Admin\Models\CustumerModel.cs" />
+    <Compile Include="Areas\Admin\Models\DetielOrderModel.cs" />
+    <Compile Include="Areas\Admin\Models\NhaSXModel.cs" />
+    <Compile Include="Areas\Admin\Models\OrdersModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\TheLoaiModel.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HangSanXuatController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoaiSanPhamController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ThanhToanController.cs" />
+    <Compile Include="DAO\Carts.cs" />
+    <Compile Include="DAO\CategoryDao.cs" />
+    <Compile Include="DAO\NSXDao.cs" />
+    <Compile Include="DAO\ProductTypeDao.cs" />
+    <Compile Include="DAO\UserDao.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Administrator.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BinhLuan.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CTDonHang.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaSanXuat.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopTheThao.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopTheThao.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopTheThao.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopTheThao.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopTheThao.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TheLoai.cs">
+      <DependentUpon>ShopTheThao.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Content\data\flot-data.js" />
+    <Content Include="Areas\Admin\Content\data\morris-data.js" />
+    <Content Include="Areas\Admin\Content\dist\css\sb-admin-2.css" />
+    <Content Include="Areas\Admin\Content\dist\css\sb-admin-2.min.css" />
+    <Content Include="Areas\Admin\Content\dist\js\sb-admin-2.js" />
+    <Content Include="Areas\Admin\Content\dist\js\sb-admin-2.min.js" />
+    <Content Include="Areas\Admin\Content\js\sb-admin-2.js" />
+    <Content Include="Areas\Admin\vendor\bootstrap-social\bootstrap-social.css" />
+    <Content Include="Areas\Admin\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Areas\Admin\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Admin\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Areas\Admin\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="Areas\Admin\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="Areas\Admin\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables-plugins\index.html" />
+    <Content Include="Areas\Admin\vendor\datatables-responsive\dataTables.responsive.css" />
+    <Content Include="Areas\Admin\vendor\datatables-responsive\dataTables.responsive.js" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.bootstrap.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.foundation.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.foundation.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.jqueryui.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.material.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.material.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.semanticui.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.uikit.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\dataTables.uikit.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\jquery.dataTables.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Areas\Admin\vendor\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Areas\Admin\vendor\datatables\images\favicon.ico" />
+    <Content Include="Areas\Admin\vendor\datatables\images\sort_asc.png" />
+    <Content Include="Areas\Admin\vendor\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Areas\Admin\vendor\datatables\images\sort_both.png" />
+    <Content Include="Areas\Admin\vendor\datatables\images\sort_desc.png" />
+    <Content Include="Areas\Admin\vendor\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.bootstrap.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.foundation.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.foundation.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.jqueryui.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.material.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.material.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.semanticui.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.uikit.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\dataTables.uikit.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\jquery.dataTables.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\vendor\datatables\js\jquery.js" />
+    <Content Include="Areas\Admin\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <Content Include="Areas\Admin\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="Areas\Admin\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <Content Include="Areas\Admin\vendor\flot\excanvas.js" />
+    <Content Include="Areas\Admin\vendor\flot\excanvas.min.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.colorhelpers.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.canvas.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.crosshair.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.errorbars.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.image.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.navigate.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.selection.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.stack.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.symbol.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.threshold.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.flot.time.js" />
+    <Content Include="Areas\Admin\vendor\flot\jquery.js" />
+    <Content Include="Areas\Admin\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Admin\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Areas\Admin\vendor\jquery\jquery.js" />
+    <Content Include="Areas\Admin\vendor\jquery\jquery.min.js" />
+    <Content Include="Areas\Admin\vendor\metisMenu\metisMenu.css" />
+    <Content Include="Areas\Admin\vendor\metisMenu\metisMenu.js" />
+    <Content Include="Areas\Admin\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="Areas\Admin\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="Areas\Admin\vendor\morrisjs\morris.css" />
+    <Content Include="Areas\Admin\vendor\morrisjs\morris.js" />
+    <Content Include="Areas\Admin\vendor\morrisjs\morris.min.js" />
+    <Content Include="Areas\Admin\vendor\raphael\raphael.js" />
+    <Content Include="Areas\Admin\vendor\raphael\raphael.min.js" />
+    <Content Include="Areas\vendor\bootstrap-social\bootstrap-social.css" />
+    <Content Include="Areas\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Areas\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Areas\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\vendor\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="Areas\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="Areas\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Areas\vendor\datatables-plugins\index.html" />
+    <Content Include="Areas\vendor\datatables-responsive\dataTables.responsive.css" />
+    <Content Include="Areas\vendor\datatables-responsive\dataTables.responsive.js" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.bootstrap.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.foundation.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.foundation.min.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.jqueryui.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.material.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.material.min.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.semanticui.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.uikit.css" />
+    <Content Include="Areas\vendor\datatables\css\dataTables.uikit.min.css" />
+    <Content Include="Areas\vendor\datatables\css\jquery.dataTables.css" />
+    <Content Include="Areas\vendor\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Areas\vendor\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Areas\vendor\datatables\images\favicon.ico" />
+    <Content Include="Areas\vendor\datatables\images\sort_asc.png" />
+    <Content Include="Areas\vendor\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Areas\vendor\datatables\images\sort_both.png" />
+    <Content Include="Areas\vendor\datatables\images\sort_desc.png" />
+    <Content Include="Areas\vendor\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.bootstrap.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.foundation.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.foundation.min.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.jqueryui.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.material.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.material.min.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.semanticui.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.uikit.js" />
+    <Content Include="Areas\vendor\datatables\js\dataTables.uikit.min.js" />
+    <Content Include="Areas\vendor\datatables\js\jquery.dataTables.js" />
+    <Content Include="Areas\vendor\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\vendor\datatables\js\jquery.js" />
+    <Content Include="Areas\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <Content Include="Areas\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="Areas\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <Content Include="Areas\vendor\flot\excanvas.js" />
+    <Content Include="Areas\vendor\flot\excanvas.min.js" />
+    <Content Include="Areas\vendor\flot\jquery.colorhelpers.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.canvas.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.crosshair.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.errorbars.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.image.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.navigate.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.selection.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.stack.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.symbol.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.threshold.js" />
+    <Content Include="Areas\vendor\flot\jquery.flot.time.js" />
+    <Content Include="Areas\vendor\flot\jquery.js" />
+    <Content Include="Areas\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Areas\vendor\jquery\jquery.js" />
+    <Content Include="Areas\vendor\jquery\jquery.min.js" />
+    <Content Include="Areas\vendor\metisMenu\metisMenu.css" />
+    <Content Include="Areas\vendor\metisMenu\metisMenu.js" />
+    <Content Include="Areas\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="Areas\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="Areas\vendor\morrisjs\morris.css" />
+    <Content Include="Areas\vendor\morrisjs\morris.js" />
+    <Content Include="Areas\vendor\morrisjs\morris.min.js" />
+    <Content Include="Areas\vendor\raphael\raphael.js" />
+    <Content Include="Areas\vendor\raphael\raphael.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="image\image_sp\1g2_m2_l2_xl2_2xl2-8353.jpg" />
+    <Content Include="image\image_sp\a-under-armour-mau-den.jpg" />
+    <Content Include="image\image_sp\Ao-gio-chinh-hang-Nike.jpg" />
+    <Content Include="image\image_sp\Ao-gio-chinh-hang-Nike1.jpg" />
+    <Content Include="image\image_sp\ao-sat-nach-under-armour.jpg" />
+    <Content Include="image\image_sp\ao-the-thao-nam-under-armour-.jpg" />
+    <Content Include="image\image_sp\ao-the-thao-nam.jpg" />
+    <Content Include="image\image_sp\aoNike.jpg" />
+    <Content Include="image\image_sp\aothe-thao-2-mau-3.jpg" />
+    <Content Include="image\image_sp\aott.jpg" />
+    <Content Include="image\image_sp\aott1.jpg" />
+    <Content Include="image\image_sp\aott2.jpg" />
+    <Content Include="image\image_sp\aott4.png" />
+    <Content Include="image\image_sp\bott.jpg" />
+    <Content Include="image\image_sp\giay-da-bong.jpg" />
+    <Content Include="image\image_sp\Giaydb1.jpg" />
+    <Content Include="image\image_sp\giaydb2.jpg" />
+    <Content Include="image\image_sp\giaydb3.jpg" />
+    <Content Include="image\image_sp\giaydb4.jpg" />
+    <Content Include="image\image_sp\giay_da_bong_kamito.jpg" />
+    <Content Include="image\image_sp\images %281%29.jpg" />
+    <Content Include="image\image_sp\images %282%29.jpg" />
+    <Content Include="image\image_sp\images %283%29.jpg" />
+    <Content Include="image\image_sp\images %284%29.jpg" />
+    <Content Include="image\image_sp\images %285%29.jpg" />
+    <Content Include="image\image_sp\images.jpg" />
+    <Content Include="image\image_sp\imagesaokhoac.jpg" />
+    <Content Include="image\image_sp\mukhong.jpg" />
+    <Content Include="image\image_sp\muthethao.jpg" />
+    <Content Include="image\image_sp\quan-dui-chay-bo-nike.jpg" />
+    <Content Include="image\image_sp\quan-the-thao.jpg" />
+    <Content Include="image\image_sp\quan-thethao.jpg" />
+    <Content Include="image\image_sp\quantt.jpg" />
+    <Content Include="image\image_sp\quantt1.jpg" />
+    <Content Include="image\image_sp\quantt2.jpg" />
+    <Content Include="image\image_sp\quantt4.jpg" />
+    <Content Include="image\image_sp\QuanUnderArmours.jpg" />
+    <Content Include="image\image_sp\the-thao-nam-mau-puma.jpg" />
+    <Content Include="image\image_sp\underArmourquan.jpg" />
+    <Content Include="image\image_sp\xuong-si-ao-the-thao-nike.jpg" />
+    <Content Include="image\image_tl\banner.jpg" />
+    <Content Include="image\image_tl\giaydabong.jpg" />
+    <Content Include="image\image_tl\icon_card.png" />
+    <Content Include="image\image_tl\icon_shipping.png" />
+    <Content Include="image\image_tl\icon_support.png" />
+    <Content Include="image\image_tl\MauAoDabong.png" />
+    <Content Include="image\image_tl\nonthethao.jpg" />
+    <Content Include="image\image_tl\proof.jpg" />
+    <Content Include="image\image_tl\Quantt.jpg" />
+    <Content Include="Models\ShopTheThao.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopTheThao.edmx</DependentUpon>
+      <LastGenOutput>ShopTheThao.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShopTheThao.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopTheThao.edmx</DependentUpon>
+      <LastGenOutput>ShopTheThao.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\vendor\bootstrap-social\bootstrap-social.less" />
+    <Content Include="Areas\Admin\vendor\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="Areas\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <Content Include="Areas\Admin\vendor\datatables\images\Sorting icons.psd" />
+    <Content Include="Areas\Admin\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Areas\Admin\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\animated.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\core.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\extras.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\icons.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\larger.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\list.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\path.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\spinning.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\less\variables.less" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_extras.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_spinning.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Areas\Admin\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Content\less\mixins.less" />
+    <Content Include="Areas\Admin\Content\less\sb-admin-2.less" />
+    <Content Include="Areas\Admin\Content\less\variables.less" />
+    <Content Include="Areas\vendor\bootstrap-social\bootstrap-social.less" />
+    <Content Include="Areas\vendor\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="Areas\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <Content Include="Areas\vendor\datatables\images\Sorting icons.psd" />
+    <Content Include="Areas\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Areas\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\vendor\font-awesome\less\animated.less" />
+    <Content Include="Areas\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Areas\vendor\font-awesome\less\core.less" />
+    <Content Include="Areas\vendor\font-awesome\less\extras.less" />
+    <Content Include="Areas\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Areas\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Areas\vendor\font-awesome\less\icons.less" />
+    <Content Include="Areas\vendor\font-awesome\less\larger.less" />
+    <Content Include="Areas\vendor\font-awesome\less\list.less" />
+    <Content Include="Areas\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Areas\vendor\font-awesome\less\path.less" />
+    <Content Include="Areas\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Areas\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Areas\vendor\font-awesome\less\spinning.less" />
+    <Content Include="Areas\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Areas\vendor\font-awesome\less\variables.less" />
+    <Content Include="Areas\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_extras.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_spinning.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Areas\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Category\CreatLoaiSP.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\EditLSP.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\LogIn.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaSanX\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaSanX\Creat.cshtml" />
+    <Content Include="Areas\Admin\Views\NhaSanX\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaiSP\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaiSP\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TheLoaiSP\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DeteilOrder\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
+    <EntityDeploy Include="Models\ShopTheThao.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShopTheThao.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ShopTheThao.edmx.diagram">
+      <DependentUpon>ShopTheThao.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Products\Searchproduct.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Shop\Content\bootstrap-theme.css" />
+    <Content Include="Shop\Content\bootstrap-theme.min.css" />
+    <Content Include="Shop\Content\bootstrap.css" />
+    <Content Include="Shop\Content\bootstrap.min.css" />
+    <Content Include="Shop\Content\css\bootstrap.css" />
+    <Content Include="Shop\Content\css\cloud-zoom.css" />
+    <Content Include="Shop\Content\css\font-awesome.css" />
+    <Content Include="Shop\Content\css\jstarbox.css" />
+    <Content Include="Shop\Content\css\style.css" />
+    <Content Include="Shop\Content\js\bootstrap.js" />
+    <Content Include="Shop\Content\js\cloud-zoom.1.0.2.min.js" />
+    <Content Include="Shop\Content\js\easing.js" />
+    <Content Include="Shop\Content\js\easyResponsiveTabs.js" />
+    <Content Include="Shop\Content\js\jquery-1.11.1.min.js" />
+    <Content Include="Shop\Content\js\jquery.js" />
+    <Content Include="Shop\Content\js\jquery.vide.min.js" />
+    <Content Include="Shop\Content\js\jquery.zoomtoo.js" />
+    <Content Include="Shop\Content\js\jstarbox.js" />
+    <Content Include="Shop\Content\js\modernizr.custom.js" />
+    <Content Include="Shop\Content\js\move-top.js" />
+    <Content Include="Shop\Content\PagedList.css" />
+    <Content Include="Shop\fonts\fontawesome-webfont.svg" />
+    <Content Include="Shop\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Shop\vendor\bootstrap-social\bootstrap-social.css" />
+    <Content Include="Shop\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Shop\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Shop\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Shop\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Shop\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Shop\vendor\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="Shop\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="Shop\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Shop\vendor\datatables-plugins\index.html" />
+    <Content Include="Shop\vendor\datatables-responsive\dataTables.responsive.css" />
+    <Content Include="Shop\vendor\datatables-responsive\dataTables.responsive.js" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.bootstrap.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.foundation.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.foundation.min.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.jqueryui.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.material.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.material.min.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.semanticui.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.uikit.css" />
+    <Content Include="Shop\vendor\datatables\css\dataTables.uikit.min.css" />
+    <Content Include="Shop\vendor\datatables\css\jquery.dataTables.css" />
+    <Content Include="Shop\vendor\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Shop\vendor\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Shop\vendor\datatables\images\favicon.ico" />
+    <Content Include="Shop\vendor\datatables\images\sort_asc.png" />
+    <Content Include="Shop\vendor\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Shop\vendor\datatables\images\sort_both.png" />
+    <Content Include="Shop\vendor\datatables\images\sort_desc.png" />
+    <Content Include="Shop\vendor\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.bootstrap.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.foundation.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.foundation.min.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.jqueryui.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.material.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.material.min.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.semanticui.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.uikit.js" />
+    <Content Include="Shop\vendor\datatables\js\dataTables.uikit.min.js" />
+    <Content Include="Shop\vendor\datatables\js\jquery.dataTables.js" />
+    <Content Include="Shop\vendor\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Shop\vendor\datatables\js\jquery.js" />
+    <Content Include="Shop\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <Content Include="Shop\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="Shop\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <Content Include="Shop\vendor\flot\excanvas.js" />
+    <Content Include="Shop\vendor\flot\excanvas.min.js" />
+    <Content Include="Shop\vendor\flot\jquery.colorhelpers.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.canvas.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.crosshair.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.errorbars.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.image.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.navigate.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.selection.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.stack.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.symbol.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.threshold.js" />
+    <Content Include="Shop\vendor\flot\jquery.flot.time.js" />
+    <Content Include="Shop\vendor\flot\jquery.js" />
+    <Content Include="Shop\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Shop\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Shop\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Shop\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Shop\vendor\jquery\jquery.js" />
+    <Content Include="Shop\vendor\jquery\jquery.min.js" />
+    <Content Include="Shop\vendor\metisMenu\metisMenu.css" />
+    <Content Include="Shop\vendor\metisMenu\metisMenu.js" />
+    <Content Include="Shop\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="Shop\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="Shop\vendor\morrisjs\morris.css" />
+    <Content Include="Shop\vendor\morrisjs\morris.js" />
+    <Content Include="Shop\vendor\morrisjs\morris.min.js" />
+    <Content Include="Shop\vendor\raphael\raphael.js" />
+    <Content Include="Shop\vendor\raphael\raphael.min.js" />
+    <Content Include="tinymce\jquery.tinymce.min.js" />
+    <Content Include="tinymce\license.txt" />
+    <Content Include="tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="tinymce\plugins\code\plugin.min.js" />
+    <Content Include="tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="tinymce\plugins\help\img\logo.png" />
+    <Content Include="tinymce\plugins\help\plugin.min.js" />
+    <Content Include="tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="tinymce\plugins\image\plugin.min.js" />
+    <Content Include="tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="tinymce\plugins\link\plugin.min.js" />
+    <Content Include="tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="tinymce\plugins\media\plugin.min.js" />
+    <Content Include="tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="tinymce\plugins\print\plugin.min.js" />
+    <Content Include="tinymce\plugins\save\plugin.min.js" />
+    <Content Include="tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="tinymce\plugins\table\plugin.min.js" />
+    <Content Include="tinymce\plugins\template\plugin.min.js" />
+    <Content Include="tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="tinymce\skins\lightgray\content.min.css" />
+    <Content Include="tinymce\skins\lightgray\content.mobile.min.css" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="tinymce\skins\lightgray\skin.mobile.min.css" />
+    <Content Include="tinymce\themes\inlite\theme.min.js" />
+    <Content Include="tinymce\themes\mobile\theme.min.js" />
+    <Content Include="tinymce\themes\modern\theme.min.js" />
+    <Content Include="tinymce\tinymce.min.js" />
+    <Content Include="video\videoQA.mp4" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Shop\Content\less\mixins.less" />
+    <Content Include="Shop\Content\less\sb-admin-2.less" />
+    <Content Include="Shop\Content\less\variables.less" />
+    <Content Include="Shop\fonts\fontawesome-webfont.eot" />
+    <Content Include="Shop\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Shop\fonts\fontawesome-webfont.woff" />
+    <Content Include="Shop\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Shop\fonts\FontAwesome.otf" />
+    <Content Include="Shop\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Shop\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Shop\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Shop\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Shop\vendor\bootstrap-social\bootstrap-social.less" />
+    <Content Include="Shop\vendor\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="Shop\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Shop\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Shop\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Shop\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Shop\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <Content Include="Shop\vendor\datatables\images\Sorting icons.psd" />
+    <Content Include="Shop\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Shop\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Shop\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Shop\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Shop\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Shop\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Shop\vendor\font-awesome\less\animated.less" />
+    <Content Include="Shop\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Shop\vendor\font-awesome\less\core.less" />
+    <Content Include="Shop\vendor\font-awesome\less\extras.less" />
+    <Content Include="Shop\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Shop\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Shop\vendor\font-awesome\less\icons.less" />
+    <Content Include="Shop\vendor\font-awesome\less\larger.less" />
+    <Content Include="Shop\vendor\font-awesome\less\list.less" />
+    <Content Include="Shop\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Shop\vendor\font-awesome\less\path.less" />
+    <Content Include="Shop\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Shop\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Shop\vendor\font-awesome\less\spinning.less" />
+    <Content Include="Shop\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Shop\vendor\font-awesome\less\variables.less" />
+    <Content Include="Shop\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_extras.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_spinning.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Shop\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\SanPham\Index.cshtml" />
+    <Content Include="Views\SanPham\DetailSanPham.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoLoai.cshtml" />
+    <Content Include="Views\SanPham\SanPhamTheoNSX.cshtml" />
+    <Content Include="Views\HangSanXuat\PartialHangSX.cshtml" />
+    <Content Include="Views\LoaiSanPham\PartialLoaiSanPham.cshtml" />
+    <Content Include="Views\Search\SearchSanPham.cshtml" />
+    <Content Include="tinymce\langs\readme.md" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Views\GioHang\ViewCarts.cshtml" />
+    <Content Include="Views\ThanhToan\HoaDon.cshtml" />
+    <Content Include="Views\ThanhToan\ViewCarts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50086</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50086/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,85 @@
+﻿@model ShopTheThao.Areas.Admin.Models.ProductModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="~/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+}
+
+<h2>Tạo sản phẩm mới</h2>
+
+<div>
+    <i class="fa fa-undo fa-fw"></i>@Html.ActionLink("Quay lại", "Index", "Products")
+</div>
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="text-success">
+            @ViewBag.message
+        </div>
+        <div class="form-group col-lg-5">
+            <label>Mã sản phẩm</label>
+            @Html.EditorFor(model => model.SPMa, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập mã sản phẩm..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.SPMa)</div>
+
+            <label>Tên sản phẩm</label>
+            @Html.EditorFor(model => model.SPTen, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên sản phẩm..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.SPTen)</div>
+
+            <br />
+            <label>Loại sản phẩm</label>
+            @Html.DropDownListFor(model => model.LSPMa, null, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.ValidationMessageFor(model => model.LSPMa, "", new { @class = "text-danger" })*@
+
+            <br />
+            <label>Hãng sản xuất</label>
+            @Html.DropDownListFor(model => model.NSXMa, null, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NSXMa, "", new { @class = "text-danger" })
+
+            <br />
+            <label>Kích cỡ</label>
+            @Html.EditorFor(model => model.SPSize, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập kích cỡ sản phẩm..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.SPSize)</div>
+
+            <label>Đơn giá</label>
+            @Html.EditorFor(model => model.SPGiaBan, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập đơn giá sản phẩm..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.SPGiaBan)</div>
+
+            <label>Chiết khấu</label>
+            @Html.EditorFor(model => model.SPGIamGia, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập chiết khấu (%)..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.SPGIamGia)</div>
+
+            <label>Hình ảnh</label>
+            <input type="file" id="Image" name="Image" />
+            <div class="text-danger">@ViewBag.HinhAnh</div> 
+            
+            <label>Ngày cập nhật</label>
+            @Html.EditorFor(model => model.SPNgayUpdate, new { @class = "form-control", @placeholder = "Nhập ngày cập nhật..." })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.SPNgayUpdate)</div>
+
+            <label>Mô tả</label>
+            <div class="text-danger">
+                @*@Html.ValidationMessageFor(model => model.SPNoiDung)*@
+                @Html.Raw("<textarea id='mytextarea' name='SPNoiDung'>Hello, World!</textarea>")
+            </div>
+
+
+
+            <br />
+            <input type="submit" value="Tạo mới" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

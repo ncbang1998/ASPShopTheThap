@@ -1,0 +1,11 @@
+﻿@using ShopTheThao.Models;
+@model List<NhaSanXuat>
+
+<div class="col-sm-12">
+    <ul class="multi-column-dropdown">
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("SanPhamTheoNSX", "SanPham", new { @idNhasx = item.NSXMa})">@item.NSXTen</a></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopTheThaoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="TaiKhoan" />
+    </Key>
+    <Property Name="TaiKhoan" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BinhLuan">
+    <Key>
+      <PropertyRef Name="BLMa" />
+    </Key>
+    <Property Name="BLMa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SPMa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BLTinNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__BinhLuan__SPMa__25869641" FromRole="BinhLuan" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="CTDonHang">
+    <Key>
+      <PropertyRef Name="DHMa" />
+      <PropertyRef Name="SPMa" />
+    </Key>
+    <Property Name="DHMa" Type="Int32" Nullable="false" />
+    <Property Name="SPMa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CTDHSoLuong" Type="Int32" />
+    <Property Name="CTDHThanhTien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DonHang" Relationship="Self.FK__CTDonHang__DHMa__4CA06362" FromRole="CTDonHang" ToRole="DonHang" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__CTDonHang__SPMa__4D94879B" FromRole="CTDonHang" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="DHMa" />
+    </Key>
+    <Property Name="DHMa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KHSdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="KHTinNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DHTGDatHang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DHNoidung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTDonHangs" Relationship="Self.FK__CTDonHang__DHMa__4CA06362" FromRole="DonHang" ToRole="CTDonHang" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK__DonHang__KHSdt__49C3F6B7" FromRole="DonHang" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="KHSdt" />
+    </Key>
+    <Property Name="KHSdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KHHoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="KHEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KHDiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__KHSdt__49C3F6B7" FromRole="KhachHang" ToRole="DonHang" />
+  </EntityType>
+  <EntityType Name="LoaiSanPham">
+    <Key>
+      <PropertyRef Name="LSPMa" />
+    </Key>
+    <Property Name="LSPMa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TLMa" Type="Int32" />
+    <Property Name="LSPTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TheLoai" Relationship="Self.FK__LoaiSanPha__TLMa__1273C1CD" FromRole="LoaiSanPham" ToRole="TheLoai" />
+    <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__LSPMa__182C9B23" FromRole="LoaiSanPham" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="NhaSanXuat">
+    <Key>
+      <PropertyRef Name="NSXMa" />
+    </Key>
+    <Property Name="NSXMa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NSXTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NSXSdt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NSXEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NSXDiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NSXThongTin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__NSXMa__173876EA" FromRole="NhaSanXuat" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="SPMa" />
+    </Key>
+    <Property Name="SPMa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NSXMa" Type="Int32" />
+    <Property Name="LSPMa" Type="Int32" />
+    <Property Name="SPTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SPSize" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SPGiaBan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SPGIamGia" Type="Int32" />
+    <Property Name="SPAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SPNgayUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPNoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__SPMa__25869641" FromRole="SanPham" ToRole="BinhLuan" />
+    <NavigationProperty Name="CTDonHangs" Relationship="Self.FK__CTDonHang__SPMa__4D94879B" FromRole="SanPham" ToRole="CTDonHang" />
+    <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK__SanPham__LSPMa__182C9B23" FromRole="SanPham" ToRole="LoaiSanPham" />
+    <NavigationProperty Name="NhaSanXuat" Relationship="Self.FK__SanPham__NSXMa__173876EA" FromRole="SanPham" ToRole="NhaSanXuat" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TheLoai">
+    <Key>
+      <PropertyRef Name="TLMa" />
+    </Key>
+    <Property Name="TLMa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TLTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TLAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LoaiSanPhams" Relationship="Self.FK__LoaiSanPha__TLMa__1273C1CD" FromRole="TheLoai" ToRole="LoaiSanPham" />
+  </EntityType>
+  <Association Name="FK__BinhLuan__SPMa__25869641">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="SPMa" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="SPMa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTDonHang__DHMa__4CA06362">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+    <End Role="CTDonHang" Type="Self.CTDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="DHMa" />
+      </Principal>
+      <Dependent Role="CTDonHang">
+        <PropertyRef Name="DHMa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTDonHang__SPMa__4D94879B">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="CTDonHang" Type="Self.CTDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="SPMa" />
+      </Principal>
+      <Dependent Role="CTDonHang">
+        <PropertyRef Name="SPMa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__KHSdt__49C3F6B7">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="KHSdt" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="KHSdt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoaiSanPha__TLMa__1273C1CD">
+    <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+    <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheLoai">
+        <PropertyRef Name="TLMa" />
+      </Principal>
+      <Dependent Role="LoaiSanPham">
+        <PropertyRef Name="TLMa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPham__LSPMa__182C9B23">
+    <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSanPham">
+        <PropertyRef Name="LSPMa" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="LSPMa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPham__NSXMa__173876EA">
+    <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaSanXuat">
+        <PropertyRef Name="NSXMa" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="NSXMa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopTheThaoEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+    <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
+    <EntitySet Name="CTDonHangs" EntityType="Self.CTDonHang" />
+    <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="LoaiSanPhams" EntityType="Self.LoaiSanPham" />
+    <EntitySet Name="NhaSanXuats" EntityType="Self.NhaSanXuat" />
+    <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TheLoais" EntityType="Self.TheLoai" />
+    <AssociationSet Name="FK__BinhLuan__SPMa__25869641" Association="Self.FK__BinhLuan__SPMa__25869641">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="BinhLuan" EntitySet="BinhLuans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTDonHang__DHMa__4CA06362" Association="Self.FK__CTDonHang__DHMa__4CA06362">
+      <End Role="DonHang" EntitySet="DonHangs" />
+      <End Role="CTDonHang" EntitySet="CTDonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTDonHang__SPMa__4D94879B" Association="Self.FK__CTDonHang__SPMa__4D94879B">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="CTDonHang" EntitySet="CTDonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__KHSdt__49C3F6B7" Association="Self.FK__DonHang__KHSdt__49C3F6B7">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="DonHang" EntitySet="DonHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoaiSanPha__TLMa__1273C1CD" Association="Self.FK__LoaiSanPha__TLMa__1273C1CD">
+      <End Role="TheLoai" EntitySet="TheLoais" />
+      <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPham__LSPMa__182C9B23" Association="Self.FK__SanPham__LSPMa__182C9B23">
+      <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPham__NSXMa__173876EA" Association="Self.FK__SanPham__NSXMa__173876EA">
+      <End Role="NhaSanXuat" EntitySet="NhaSanXuats" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

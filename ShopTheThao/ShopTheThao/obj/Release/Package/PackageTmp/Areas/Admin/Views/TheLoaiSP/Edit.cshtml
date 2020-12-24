@@ -1,0 +1,41 @@
+﻿@model ShopTheThao.Areas.Admin.Models.TheLoaiModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Cập nhật danh mục</h2>
+
+<div>
+    <i class="fa fa-undo fa-fw"></i>@Html.ActionLink("Quay lại", "Index", "TheLoaiSP")
+</div>
+@using (Html.BeginForm("Edit", "TheLoaiSP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.TLMa)
+        <div class="text-success">
+            @ViewBag.EditProError
+        </div>
+        <div class="form-group col-lg-5">
+            <label>Tên sản phẩm</label>
+            @Html.EditorFor(model => model.TLTen, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên sản phẩm..." } })
+            <div class="text-danger">@Html.ValidationMessageFor(model => model.TLTen)</div>
+
+            <label>Hình ảnh</label>
+            <input type="file" id="Image" name="Image" />
+            @Html.HiddenFor(model => model.TLAnh)
+        
+            <br />
+            <input type="submit" value="Cập nhật" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

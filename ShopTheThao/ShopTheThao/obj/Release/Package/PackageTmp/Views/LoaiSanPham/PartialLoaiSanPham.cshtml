@@ -1,0 +1,15 @@
+﻿@using ShopTheThao.Models;
+@model List<LoaiSanPham>
+
+
+<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Sản phẩm<b class="caret"></b></span></a>
+<ul class="dropdown-menu">
+    <div class="col-sm-12">
+        <ul class="multi-column-dropdown">
+            @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("SanPhamTheoLoai", "SanPham", new { @idSPLoai = item.LSPMa })"><i class="fa fa-angle-right" aria-hidden="true"></i>@item.LSPTen</a></li>
+            }
+        </ul>
+    </div>
+</ul>
